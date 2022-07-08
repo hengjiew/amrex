@@ -931,6 +931,7 @@ MLEBABecLap::normalize (int amrlev, int mglev, MultiFab& mf) const
 void
 MLEBABecLap::restriction (int amrlev, int cmglev, MultiFab& crse, MultiFab& fine) const
 {
+    BL_PROFILE("MLEBABecLap::restriction()");
     IntVect ratio = (amrlev > 0) ? IntVect(mg_coarsen_ratio) : mg_coarsen_ratio_vec[cmglev-1];
     const int ncomp = getNComp();
     amrex::EB_average_down(fine, crse, 0, ncomp, ratio);

@@ -336,7 +336,7 @@ void
 EB_average_down (const MultiFab& S_fine, MultiFab& S_crse, const MultiFab& vol_fine,
                  const MultiFab& vfrac_fine, int scomp, int ncomp, const IntVect& ratio)
 {
-    BL_PROFILE("EB_average_down");
+    BL_PROFILE("EB_average_down_with_volume");
 
     AMREX_ASSERT(S_fine.ixType().cellCentered());
     AMREX_ASSERT(S_crse.ixType().cellCentered());
@@ -399,6 +399,8 @@ EB_average_down (const MultiFab& S_fine, MultiFab& S_crse, int scomp, int ncomp,
 void
 EB_average_down (const MultiFab& S_fine, MultiFab& S_crse, int scomp, int ncomp, const IntVect& ratio)
 {
+    BL_PROFILE("EB_average_down");
+
     if (!S_fine.hasEBFabFactory())
     {
         amrex::average_down(S_fine, S_crse, scomp, ncomp, ratio);

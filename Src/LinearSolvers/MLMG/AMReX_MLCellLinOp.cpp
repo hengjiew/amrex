@@ -395,6 +395,7 @@ MLCellLinOp::makeNGrids (int grid_size) const
 void
 MLCellLinOp::restriction (int amrlev, int cmglev, MultiFab& crse, MultiFab& fine) const
 {
+    BL_PROFILE("MLCellLinOp::restriction()");
     const int ncomp = getNComp();
 #ifdef AMREX_SOFT_PERF_COUNTERS
     perf_counters.restrict(crse);
